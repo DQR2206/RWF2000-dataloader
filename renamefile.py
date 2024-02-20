@@ -13,23 +13,22 @@ def rename_file(path):
                     sub_sub_dirs = os.listdir(sub_path)
                     i = 0
                     for sub_sub_dir in sub_sub_dirs:   # .avi
-                        sub_path_0 = os.path.join(entry_path,sub_dir)
-                        file_path = os.path.join(sub_path_0,sub_sub_dir)
+                        file_path = os.path.join(sub_path,sub_sub_dir)
                         train = "train"
                         val = "val"
-                        fight = "Fight"
-                        nonfight = "NonFight"
-                        if train in sub_path_0:
-                            if nonfight in sub_path_0:   # 这里有一个小bug是包含nonfight自然也包含fight，因此要先判断nonfight
-                                new_file_name = "train_nonfight_" + str(i) + ".avi"
+                        fight = "fight"
+                        nonfight = "nonfight"
+                        if train in sub_path:
+                            if nonfight in sub_path:   # 这里有一个小bug是包含nonfight自然也包含fight，因此要先判断nonfight
+                                new_file_name = "nonfight_" + str(i) + ".avi"
                                 new_file_path = os.path.join(sub_path,new_file_name)
                                 if os.path.exists(new_file_path):
                                     pass
                                 else:
                                     os.rename(file_path,new_file_path)
                                 i = i + 1
-                            elif fight in sub_path_0:
-                                new_file_name = "train_fight_" + str(i) + ".avi"
+                            elif fight in sub_path:
+                                new_file_name = "fight_" + str(i) + ".avi"
                                 new_file_path = os.path.join(sub_path, new_file_name)
                                 if os.path.exists(new_file_path):
                                     pass
@@ -38,17 +37,17 @@ def rename_file(path):
                                 i = i + 1
                             else:
                                 pass
-                        elif val in sub_path_0:
-                            if nonfight in sub_path_0:
-                                new_file_name = "val_nonfight_" + str(i) + ".avi"
+                        elif val in sub_path:
+                            if nonfight in sub_path:
+                                new_file_name = "nonfight_" + str(i) + ".avi"
                                 new_file_path = os.path.join(sub_path, new_file_name)
                                 if os.path.exists(new_file_path):
                                     pass
                                 else:
                                     os.rename(file_path, new_file_path)
                                 i = i + 1
-                            elif fight in sub_path_0:
-                                new_file_name = "val_fight_" + str(i) + ".avi"
+                            elif fight in sub_path:
+                                new_file_name = "fight_" + str(i) + ".avi"
                                 new_file_path = os.path.join(sub_path, new_file_name)
                                 if os.path.exists(new_file_path):
                                     pass
@@ -61,6 +60,5 @@ def rename_file(path):
                     pass
         else:
             pass
-
-path = r"E:\datasetProcess\RWF-2000data"
+path = r"E:\datasetProcess\RWF-2000-video"
 rename_file(path)
